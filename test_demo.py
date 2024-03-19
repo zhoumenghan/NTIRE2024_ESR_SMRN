@@ -31,6 +31,12 @@ def select_model(args, device):
     # elif model_id == 1:
     #     from models.team[Your_Team_ID]_[Model_Name] import [Model_Name]
     #     ...
+    elif model_id == 10:
+        from models.team10_SMRN import SMRN
+        name, data_range = f"{model_id:02}_SMRN", 1.0
+        model_path = os.path.join('model_zoo', 'team10_SMRN.pth')
+        model = SMRN()
+        model.load_state_dict(torch.load(model_path), strict=True)
     else:
         raise NotImplementedError(f"Model {model_id} is not implemented.")
 
